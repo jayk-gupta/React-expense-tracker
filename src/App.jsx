@@ -1,7 +1,7 @@
-import "./App.css";
+import React,{useState} from "react";
+import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
-function App() {
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -22,8 +22,21 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  
+  // 
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
+  // 
   return (
-    <div className="App">
+    // motion.div animate ={{scale:1}} initial={{scale:0}} transition = {{type:"tween",duration:0.5}}
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
   );
