@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
+import { motion } from "framer-motion";
   const DUMMY_EXPENSES = [
     {
       id: "e1",
@@ -34,11 +35,10 @@ const App = () => {
   };
   // 
   return (
-    // motion.div animate ={{scale:1}} initial={{scale:0}} transition = {{type:"tween",duration:0.5}}
-    <div>
+    <motion.div animate ={{scale:1}} initial={{scale:0}} transition = {{type:"tween",duration:0.5}}>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
-    </div>
+    </motion.div>
   );
 }
 
