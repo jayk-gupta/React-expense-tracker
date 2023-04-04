@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-
+import { motion } from "framer-motion";
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -33,12 +33,21 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <form onSubmit={submitHandler}>
+    <motion.form
+      onSubmit={submitHandler}
+      animate={{ scale: 1 }}
+      initial={{ scale: 0 }}
+      transition={{ type: "tween", duration: 0.5 }}
+    >
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
           {/* title */}
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -58,16 +67,18 @@ const ExpenseForm = (props) => {
             type="date"
             value={enteredDate}
             onChange={dateChangeHandler}
-            min="2019-01-01"
-            max="2022-12-31"
+            min="2020-01-01"
+            max="2023-12-01"
           />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" onClick={props.onCancel}>Cancel</button>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Exepense</button>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

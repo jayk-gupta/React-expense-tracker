@@ -9,7 +9,6 @@ import ExpensesChart from './ExpensesChart';
 function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2020");
   const filterChangeHandler = (selectedYear) => {
-    console.log("Expenses.js");
     setFilteredYear(selectedYear);
   };
 
